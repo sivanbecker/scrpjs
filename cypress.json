@@ -1,0 +1,9 @@
+{
+    "env": {
+        "private_cypress_conf_file": ".cprs-private-conf.json",
+        "hilan": {
+            "start": "08",
+            "end": "17"
+        }
+    }
+}
