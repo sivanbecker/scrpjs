@@ -27,3 +27,15 @@ Using Cypress for testing and scraping
     }
     ```
 - to run headless: `npx cypress run --headless --spec cypress/integration/hilan.js`
+
+## Using [Official Cypress docker images](https://github.com/cypress-io/cypress-docker-images)
+
+Once you created and updated the cypress json conf file as described above, use the next commands to run only the **hilan** spec:
+
+```
+    export CYPRESS_PRIVATE_CONF_LOCATION=<directory containing the file>
+
+    export CYPRESS_HILAN_URL=<url to hilan login page>
+
+    docker run -it --entrypoint=cypress -v ${CYPRESS_PRIVATE_CONF_LOCATION}.cprs-private-conf.json:${CYPRESS_PRIVATE_CONF_LOCATION}.cprs-private-conf.json:ro  -e  CYPRESS_HILAN_URL -e CYPRESS_PRIVATE_CONF_LOCATION -v "$PWD":/e2e -w /e2e cypress/included:9.1.1 run --spec cypress/integration/hilan.js --browser chrome
+```
