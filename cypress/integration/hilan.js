@@ -11,7 +11,7 @@ describe('Hilan Test', () => {
                 cy.get('#user_nm')
                     .type(obj.user)
 
-                cy.get('input[class="h-input-password"]')
+                cy.get('#password_nm')
                     .type(obj.pw)
             }
             )
