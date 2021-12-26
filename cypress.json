@@ -3,7 +3,8 @@
         "private_cypress_conf_file": ".cprs-private-conf.json",
         "hilan": {
             "start": "08",
-            "end": "17"
+            "end": "17",
+            "proj_num": "4"
         }
     }
 }

@@ -19,7 +19,7 @@ describe('Hilan Test', () => {
             .find('button')
             .click()
 
-
+        // Working Hours
         cy.get('.HourReportBox > ul > li > a').first().click()
         cy.get('.HReportsGrid > tbody')
             .within(() => {
@@ -55,8 +55,31 @@ describe('Hilan Test', () => {
             })
         cy.get('input[value="שמור"]').click()
 
+        // Projects
+        cy.visit(Cypress.env('HILAN_URL'))
+        cy.get('.HourReportBox > ul > li')
+            .eq(1)
+            .within(() => {
+                cy.get('a').click()
+            })
+        cy.get('.HReportsGrid > tbody')
+            .within(() => {
+                cy.get('table[id$="innerBody"]')
+                    .within(() => {
+                        cy.get('td[class=" ItemBorder"]')
+                            .eq(1)
+                            .within(() => {
+                                cy.get('table > tbody > tr > td')
+                                    .eq(7)
+                                    .type(Cypress.env('hilan').proj_num, {delay: 3000})
+                                    .type('{enter}')
+                                
+                            })   
+                    })
+                })
+        cy.get('input[value="שמור"]').click()
+    }) 
 
-    })
 
 
 })
