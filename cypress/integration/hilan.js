@@ -6,13 +6,13 @@ describe('Hilan Test', () => {
             .its('pages')
             .its('hilan')
             .then(obj => {
-                cy.expect(obj).to.have.all.keys('user', 'pw')
+                cy.expect(obj).to.have.all.keys('user', 'pw', 'project')
 
                 cy.get('#user_nm')
                     .type(obj.user)
 
                 cy.get('#password_nm')
-                    .type(obj.pw)
+                    .type(obj.pw, { log: false })
             }
             )
         cy.get('.form-container')
@@ -71,14 +71,13 @@ describe('Hilan Test', () => {
                             .within(() => {
                                 cy.get('table > tbody > tr > td')
                                     .eq(7)
-                                    .type(Cypress.env('hilan').proj_num, {delay: 3000})
-                                    .type('{enter}')
-                                
-                            })   
+                                    .type(Cypress.env('hilan').proj_num, { delay: 4000 })
+
+                            })
                     })
-                })
+            })
         cy.get('input[value="שמור"]').click()
-    }) 
+    })
 
 
 

@@ -3,3 +3,5 @@ cypress/integration/examples
 cypress/videos/
 cypress/support
 cypress/.DS_Store
+
+*.png
