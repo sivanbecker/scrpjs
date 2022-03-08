@@ -6,7 +6,7 @@ describe('Hilan Test', () => {
             .its('pages')
             .its('hilan')
             .then(obj => {
-                cy.expect(obj).to.have.all.keys('user', 'pw', 'project')
+                cy.expect(obj).to.have.all.keys('user', 'pw')
 
                 cy.get('#user_nm')
                     .type(obj.user)
@@ -56,27 +56,29 @@ describe('Hilan Test', () => {
         cy.get('input[value="שמור"]').click()
 
         // Projects
-        cy.visit(Cypress.env('HILAN_URL'))
-        cy.get('.HourReportBox > ul > li')
-            .eq(1)
-            .within(() => {
-                cy.get('a').click()
-            })
-        cy.get('.HReportsGrid > tbody')
-            .within(() => {
-                cy.get('table[id$="innerBody"]')
-                    .within(() => {
-                        cy.get('td[class=" ItemBorder"]')
-                            .eq(1)
-                            .within(() => {
-                                cy.get('table > tbody > tr > td')
-                                    .eq(7)
-                                    .type(Cypress.env('hilan').proj_num, { delay: 4000 })
+        if ('project' in obj) {
+            cy.visit(Cypress.env('HILAN_URL'))
+            cy.get('.HourReportBox > ul > li')
+                .eq(1)
+                .within(() => {
+                    cy.get('a').click()
+                })
+            cy.get('.HReportsGrid > tbody')
+                .within(() => {
+                    cy.get('table[id$="innerBody"]')
+                        .within(() => {
+                            cy.get('td[class=" ItemBorder"]')
+                                .eq(1)
+                                .within(() => {
+                                    cy.get('table > tbody > tr > td')
+                                        .eq(7)
+                                        .type(Cypress.env('hilan').proj_num, { delay: 4000 })
 
-                            })
-                    })
-            })
-        cy.get('input[value="שמור"]').click()
+                                })
+                        })
+                })
+            cy.get('input[value="שמור"]').click()
+        }
     })
 
 
