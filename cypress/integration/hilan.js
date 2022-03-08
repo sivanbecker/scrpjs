@@ -56,7 +56,7 @@ describe('Hilan Test', () => {
         cy.get('input[value="שמור"]').click()
 
         // Projects
-        if ('project' in obj) {
+        if ('proj_num' in Cypress.env('hilan')) {
             cy.visit(Cypress.env('HILAN_URL'))
             cy.get('.HourReportBox > ul > li')
                 .eq(1)
